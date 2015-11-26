@@ -17,6 +17,7 @@ function parseQuery(href) {
     return url;
 }
 
+
 console.log(parseQuery("?sex=1&age=23&married"));  // => { sex: '1', age: '23', married: '' }
 
 console.log(parseQuery("http://localhost/feature/parsequery?a=yes"));  // => { a: 'yes' }
