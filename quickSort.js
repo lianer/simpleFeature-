@@ -93,11 +93,11 @@ function test() {
 
     setTimeout(function () {
         arr=createRandom(length, 0, 100);
-        arr=testQuick(arr, true);
+        testQuick(arr, true);
 
         setTimeout(function () {
             arr=createRandom(length, 0, 100);
-            arr=testNormal(arr, true);
+            testNormal(arr, true);
 
             console.log("-----------");
             console.log(count);
