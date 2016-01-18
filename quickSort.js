@@ -4,12 +4,12 @@
  *     length: 2,000
  *     quick:  7ms         25,839次循环
  *     normal: 8ms         2,001,000次循环
- *   
- *     length: 20,000  
+ * 
+ *     length: 20,000
  *     quick:  25ms        330,574次循环
  *     normal: 952ms       约2亿次循环
- *  
- *     length: 200,000  
+ * 
+ *     length: 200,000
  *     quick:  206ms       4,164,458次循环
  *     normal: 99,202ms    等了许久，洗了个脸回来终于好了，约200亿次循环
  * 结论：
