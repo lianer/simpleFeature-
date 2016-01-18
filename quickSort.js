@@ -105,15 +105,15 @@ function test() {
         }, 300);
     }, 300);
 
-    function testQuick(arr, time) {
-        if(time){ var st=new Date(); }
+    function testQuick(arr) {
+        var st=new Date();
         quickSort(arr);
         if(time){ console.log("quick: " + (new Date() - st) + "ms"); }
     }
 
-    function testNormal(arr, time) {
-        if(time){ var st=new Date(); }
+    function testNormal(arr) {
+        var st=new Date();
         normalSort(arr);
-        if(time){ console.log("normal: " + (new Date() - st) + "ms"); }
+        console.log("normal: " + (new Date() - st) + "ms");
     }
 }
