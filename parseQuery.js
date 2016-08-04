@@ -1,32 +1,51 @@
+/**
+ * substr
+ * @author lianer
+ * @github https://github.com/lianer/simpleFeature-
+ */
+
 function parseQuery(href, key) {
-    var hrefPattern=/^(?:([a-z]*):?\/\/)?([a-z0-9-_]{0,63})?(?::(\d*))?([^?]*)(?:\?([^#]*))?(?:#(.*))?$/i;
+  if(typeof href !== 'string'){
+    return {}
+  }
 
-    if(!href){
-        href=location.href;
+  var query, queryObj = {}, params, param, queryIndex = href.indexOf('?'), hashIndex = href.indexOf('#')
+
+  if(queryIndex < 0){
+    queryIndex = 0
+  }
+  else{
+    queryIndex ++
+  }
+
+  if(hashIndex){
+    query = href.slice(queryIndex, hashIndex)
+  }
+  else{
+    query = href.slice(queryIndex)
+  }
+  params = query.split('&')
+
+  for (var i = 0; i < params.length; i++) {
+    param = params[i].split('=')
+    if(param[0] !== ''){
+      queryObj[param[0]] = param[1] === void 0 ? '' : param[1]
     }
+  }
 
-    if(!hrefPattern.test(href)){
-        return false;
-    }
-
-    var query=RegExp.$5, url={};
-
-    query.split("&").forEach(function(v){
-        if(v) {
-            v=v.split("=");
-            url[v[0]]=v[1]||"";
-        }
-    });
-
-    if(key){
-        return (url[key]===void 0)?"":url[key];
-    }
-
-    return url;
+  if(key){
+    return queryObj[key] === void 0 ? '' : queryObj[key]
+  }
+  else{
+    return queryObj
+  }
 }
 
 
+// console.log(parseQuery('appid=123456').appid);
 
-console.log(parseQuery("?sex=1&age=23&married"));  // => { sex: '1', age: '23', married: '' }
+// console.log(parseQuery('?sex=1&age=23&married')); // => { sex: '1', age: '23', married: '' }
 
-console.log(parseQuery("http://localhost/feature/parsequery?from=news", "from"));  // => news
+// console.log(parseQuery('http://localhost/feature/parsequery?from=news&to=home', 'from')); // => news
+
+// console.log(parseQuery('/path?query=123#!/path/to/spa', 'query')); // => news
